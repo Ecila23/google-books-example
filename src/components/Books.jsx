@@ -13,7 +13,7 @@ const Books = ({ books }) => {
                 book.volumeInfo.imageLinks &&
                 book.volumeInfo.imageLinks.smallThumbnail
               }
-              alt='book cover'
+              alt={`${book.volumeInfo.title} Book Cover`}
             />
           </li>
         );

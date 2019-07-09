@@ -9,17 +9,17 @@ import axios from 'axios';
 class App extends Component {
   state = {
     books: [],
-    search: 'javascript'
+    search: 'Javascript'
   };
 
   render() {
-    console.log(this.state);
+    const { books, search } = this.state;
     return (
       <div className='App'>
-        <Heading />
-        <Search />
-        <Chart />
-        <Books books={this.state.books} />
+        <Heading search={search} />
+        <Search updateSearch={this.updateSearch} />
+        {/* <Chart books={books} /> */}
+        <Books books={books} />
       </div>
     );
   }
@@ -36,6 +36,17 @@ class App extends Component {
       ` https://www.googleapis.com/books/v1/volumes?q=${search}`
     );
     return data.items;
+  };
+
+  updateSearch = search => {
+    this.setState({ search });
+  };
+
+  componentDidUpdate = async (prevProps, prevState) => {
+    if (this.state.search !== prevState.search) {
+      const books = await this.fetchBooks();
+      this.setState({ books });
+    }
   };
 }
 
