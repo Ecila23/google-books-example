@@ -7,7 +7,7 @@ class Search extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='search'>
         <input
           type='text'
           placeholder='search for a topic...'
