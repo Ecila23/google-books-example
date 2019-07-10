@@ -18,7 +18,7 @@ class App extends Component {
       <div className='App'>
         <Heading search={search} />
         <Search updateSearch={this.updateSearch} />
-        {/* <Chart books={books} /> */}
+        <Chart books={books} />
         <Books books={books} />
       </div>
     );
